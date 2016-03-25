@@ -28,4 +28,5 @@ pip install -r requirements.txt
 python consumer.py --hashtag <hashtag>
 ```
 
-P.S.: Hashtag needs to have a # signal before the text
+Where ```--hashtag ``` will be the one to be searched, but you don't
+need to add the # signal when executing this script
