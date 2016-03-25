@@ -5,7 +5,7 @@ hashtag.
 
 ## Getting Started
 
-1. Go to ```https://apps.twitter.com/``` and create your own application in
+- Go to ```https://apps.twitter.com/``` and create your own application in
 order to get both consumer and access keys/secrets
 
 Export them as environment variables like:
@@ -17,14 +17,13 @@ $ export TWITTER_CONSUMER_KEY=<APP_CONSUMER_KEY>
 $ export TWITTER_CONSUMER_SECRET=<APP_CONSUMER_SECRET>
 ```
 
-2. Install requirements
+- Install requirements
 
 ```
 pip install -r requirements.txt
 ```
 
-
-## Use
+## Run
 ```
 python consumer.py --hashtag <hashtag>
 ```
