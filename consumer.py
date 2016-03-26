@@ -3,17 +3,7 @@
 from twitter import *
 import os
 import argparse
-
-class Tweet:
-
-    def __init__(self, date, username, name, content):
-        self.date = date
-        self.username = username.encode('ascii', 'ignore')
-        self.name = name.encode('ascii', 'ignore')
-        self.content = content.encode('ascii', 'ignore')
-
-    def __str__(self):
-        return "[%s] %s (@%s): %s" % (self.date, self.name, self.username, self.content)
+from tweet import Tweet
 
 def _parse_args():
     parser = argparse.ArgumentParser("Twitter's Feed Consumer")
