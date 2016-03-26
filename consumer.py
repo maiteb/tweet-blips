@@ -11,6 +11,11 @@ def _parse_args():
     args = parser.parse_args()
     return args
 
+def _parse_tweets(statuses):
+    for result in statuses:
+        print "(%s) @%s     %s" % (result["created_at"], result["user"]["screen_name"], result["text"])
+
+
 if __name__ == '__main__':
     access_key=os.getenv('TWITTER_ACCESS_KEY')
     access_secret=os.getenv('TWITTER_ACCESS_SECRET')
@@ -23,6 +28,4 @@ if __name__ == '__main__':
 
     query = t.search.tweets(q='#' + args.hashtag)
 
-    for result in query["statuses"]:
-        print "(%s) @%s     %s" % (result["created_at"], result["user"]["screen_name"], result["text"])
-
+    _parse_tweets(query["statuses"])
