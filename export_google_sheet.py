@@ -31,13 +31,12 @@ def _export_to_google(wks, blips_to_export):
         if not cells:
             wks.append_row([blip.name, blip.quadrant, blip.cycle, blip.is_new, "Suggested by: " + blip.user])
         else:
-            print cells
             insert_row = True
             for cell in cells:
                 # Check first if they are in the same quadrant and cycle
-                quadrant = wks.cell(cell.row, QUADRANT_INDEX)
-                cycle = wks.cell(cell.row, CYCLE_INDEX)
-                desc = wks.cell(cell.row, DESCRIPTION_INDEX)
+                quadrant = wks.cell(cell.row, QUADRANT_INDEX).value
+                cycle = wks.cell(cell.row, CYCLE_INDEX).value
+                desc = wks.cell(cell.row, DESCRIPTION_INDEX).value
                 if quadrant == blip.quadrant and cycle == blip.cycle:
                     wks.update_cell(cell.row, DESCRIPTION_INDEX, desc + ", " + blip.user)
                     insert_row = False
