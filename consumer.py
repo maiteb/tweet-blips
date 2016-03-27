@@ -55,4 +55,4 @@ if __name__ == '__main__':
         max_id, tweets =_parse_tweets(query["statuses"], last_id_found)
         _update_max_id(max_id)
         export_all(tweets)
-        print "We exported " + len(tweets) + " new tweets with the hashtag #" + args.hashtag + " to the Google Sheet"
+        print "We exported " + str(len(tweets)) + " new tweets with the hashtag #" + args.hashtag + " to the Google Sheet"
