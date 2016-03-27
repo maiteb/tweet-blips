@@ -14,7 +14,7 @@ class Blip:
     def __init__(self, tweet, is_new):
         self.quadrant = tweet.quadrant
         self.cycle = tweet.cycle
-        self.name = tweet.blip
+        self.name = tweet.blip.capitalize()
         self.user = tweet.name + " (@" + tweet.username + ")"
         self.is_new = is_new
 
@@ -63,6 +63,7 @@ def export_all(tweets):
     # we need to remove the first item because it is a label one
     previous_blips.pop(0)
 
+    previous_blips = [text.lower() for text in previous_blips]
     wks_new_radar = sht.sheet1
 
     blips_to_export = []
