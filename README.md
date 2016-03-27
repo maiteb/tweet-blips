@@ -32,8 +32,8 @@ Techniques - Access - BFF (Backend for Frontend) #HashtagToBeSearched
 Linguagens e Frameworks - Adote - ES6 #HashtagToBeSearched
 ```
 
-All the filtered tweets will be saved into a Google Spreadsheet.
-
+All the filtered tweets will be saved into a Google Spreadsheet to feed
+(https://github.com/maiteb/tech-radar)
 
 ## Getting Started
 
