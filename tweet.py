@@ -20,14 +20,14 @@ CYCLE_DICT = {
     "adopt":"adopt",
     "experimente":"trial",
     "trial":"trial",
-    "avalie":"access",
-    "access":"access",
+    "avalie":"assess",
+    "assess":"assess",
     "evite":"hold",
     "hold":"hold"
 }
 
 REGEX_quadrant="(T[é|e]cnicas|Plataformas|Ferramentas|Linguagens [&|e] Frameworks|Techniques|Platforms|Tools|Languages [&|and] Frameworks)"
-REGEX_CYCLE="(Adote|Experimente|Avalie|Evite|Adopt|Trial|Access|Hold)"
+REGEX_CYCLE="(Adote|Experimente|Avalie|Evite|Adopt|Trial|Assess|Hold)"
 REGEX_BLIP="(.*)$"
 
 FULL_REGEX="^[.*]?" + REGEX_quadrant + "[\s*]?-[\s*]?" + REGEX_CYCLE + "[\s*]?-[\s*]?" + REGEX_BLIP
