@@ -49,7 +49,10 @@ if __name__ == '__main__':
     last_id_found = long(_find_last_id_found())
     query = t.search.tweets(q='#' + args.hashtag,count=50, since_id=last_id_found)
 
-    max_id, tweets =_parse_tweets(query["statuses"], last_id_found)
-    _update_max_id(max_id)
-
-    export_all(tweets)
+    if not query['statuses']:
+        print "No new tweet was found with the hashtag #" + args.hashtag
+    else:
+        max_id, tweets =_parse_tweets(query["statuses"], last_id_found)
+        _update_max_id(max_id)
+        export_all(tweets)
+        print "We exported " + len(tweets) + " new tweets with the hashtag #" + args.hashtag + " to the Google Sheet"
