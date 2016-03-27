@@ -1,7 +1,7 @@
 # encoding: utf-8
 import re
 
-QUARTER_DICT = {
+QUADRANT_DICT = {
     "tecnicas":"techniques",
     "técnicas":"techniques",
     "techniques":"techniques",
@@ -26,11 +26,11 @@ CYCLE_DICT = {
     "hold":"hold"
 }
 
-REGEX_QUARTER="(T[é|e]cnicas|Plataformas|Ferramentas|Linguagens [&|e] Frameworks|Techniques|Platforms|Tools|Languages [&|and] Frameworks)"
+REGEX_quadrant="(T[é|e]cnicas|Plataformas|Ferramentas|Linguagens [&|e] Frameworks|Techniques|Platforms|Tools|Languages [&|and] Frameworks)"
 REGEX_CYCLE="(Adote|Experimente|Avalie|Evite|Adopt|Trial|Access|Hold)"
 REGEX_BLIP="(.*)$"
 
-FULL_REGEX="^[.*]?" + REGEX_QUARTER + "[\s*]?-[\s*]?" + REGEX_CYCLE + "[\s*]?-[\s*]?" + REGEX_BLIP
+FULL_REGEX="^[.*]?" + REGEX_quadrant + "[\s*]?-[\s*]?" + REGEX_CYCLE + "[\s*]?-[\s*]?" + REGEX_BLIP
 
 class Tweet:
 
@@ -42,10 +42,10 @@ class Tweet:
 
     def split_content(self, content):
         results = re.search(FULL_REGEX, content)
-        self.quarter = QUARTER_DICT[results.group(1).lower()]
+        self.quadrant = QUADRANT_DICT[results.group(1).lower()]
         self.cycle = CYCLE_DICT[results.group(2).lower()]
         dirty_blip = results.group(3).lower()
         self.blip = dirty_blip[:dirty_blip.index('#')].strip()
 
     def __str__(self):
-        return "[%s] %s (@%s): [%s %s %s]" % (self.date, self.name, self.username, self.quarter, self.cycle, self.blip)
+        return "[%s] %s (@%s): [%s %s %s]" % (self.date, self.name, self.username, self.quadrant, self.cycle, self.blip)

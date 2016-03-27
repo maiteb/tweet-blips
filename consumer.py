@@ -4,6 +4,7 @@ from twitter import *
 import os
 import argparse
 from tweet import Tweet
+from export_google_sheet import export_all
 
 def _parse_args():
     parser = argparse.ArgumentParser("Twitter's Feed Consumer")
@@ -51,5 +52,4 @@ if __name__ == '__main__':
     max_id, tweets =_parse_tweets(query["statuses"], last_id_found)
     _update_max_id(max_id)
 
-    for tweet in tweets:
-        print tweet
+    export_all(tweets)
