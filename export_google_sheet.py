@@ -6,8 +6,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 from oauth2client import crypt
 
 NAME_INDEX = 1
-QUADRANT_INDEX = 2
-CYCLE_INDEX = 3
+CYCLE_INDEX = 2
+QUADRANT_INDEX = 3
 DESCRIPTION_INDEX = 5
 
 class Blip:
@@ -29,7 +29,7 @@ def _export_to_google(wks, blips_to_export):
         # First we will check if the blip is already present
         cells = wks.findall(blip.name)
         if not cells:
-            wks.append_row([blip.name, blip.quadrant, blip.cycle, blip.is_new, "Suggested by: " + blip.user])
+            wks.append_row([blip.name, blip.cycle, blip.quadrant, blip.is_new, "Suggested by: " + blip.user])
         else:
             insert_row = True
             for cell in cells:
@@ -42,7 +42,7 @@ def _export_to_google(wks, blips_to_export):
                     insert_row = False
                     break
             if insert_row:
-                wks.append_row([blip.name, blip.quadrant, blip.cycle, blip.is_new, "Suggested by: " + blip.user])
+                wks.append_row([blip.name, blip.cycle, blip.quadrant, blip.is_new, "Suggested by: " + blip.user])
 
 def export_all(tweets):
     scope = ['https://spreadsheets.google.com/feeds']
