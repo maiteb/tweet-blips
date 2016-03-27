@@ -26,12 +26,12 @@ CYCLE_DICT = {
     "hold":"hold"
 }
 
-REGEX_quadrant="(T[é|e]cnicas|Plataformas|Ferramentas|Linguagens [&|e] Frameworks|Techniques|Platforms|Tools|Languages [&|and] Frameworks)"
+REGEX_quadrant="(T[é|e]cnicas|Plataformas|Ferramentas|Linguagens\s?[&|e|&amp;]\s?Frameworks|Techniques|Platforms|Tools|Languages\s?[&|and|&amp;]\s?Frameworks)"
 REGEX_CYCLE="(Adote|Experimente|Avalie|Evite|Adopt|Trial|Assess|Hold)"
 REGEX_BLIP="(.*)$"
 
 FULL_REGEX="^[.*]?" + REGEX_quadrant + "[\s*]?-[\s*]?" + REGEX_CYCLE + "[\s*]?-[\s*]?" + REGEX_BLIP
-
+print FULL_REGEX
 class Tweet:
 
     def __init__(self, date, username, name, content):
@@ -41,6 +41,7 @@ class Tweet:
         self.split_content(content.encode('ascii', 'ignore'))
 
     def split_content(self, content):
+        print content
         results = re.search(FULL_REGEX, content)
         self.quadrant = QUADRANT_DICT[results.group(1).lower()]
         self.cycle = CYCLE_DICT[results.group(2).lower()]
