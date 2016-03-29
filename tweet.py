@@ -4,6 +4,7 @@ import re
 QUADRANT_DICT = {
     "tecnicas":"techniques",
     "técnicas":"techniques",
+    "tcnicas":"techniques",
     "techniques":"techniques",
     "plataformas":"platforms",
     "plataforms":"platforms",
@@ -24,10 +25,10 @@ CYCLE_DICT = {
     "assess":"assess",
     "evite":"hold",
     "hold":"hold"
-}
 
-REGEX_quadrant="(T[é|e]cnicas|Plataformas|Ferramentas|Linguagens\s?[&|e|&amp;]\s?Frameworks|Techniques|Platforms|Tools|Languages\s?[&|and|&amp;]\s?Frameworks)"
-REGEX_CYCLE="(Adote|Experimente|Avalie|Evite|Adopt|Trial|Assess|Hold)"
+}
+REGEX_quadrant="([Tt][é|e]?cnicas|[Pp]lataformas|[Ff]erramentas|[Ll]inguagens\s?[&|e|&amp;]\s?[fF]rameworks|[tT]echniques|[Pp]latforms|[Tt]ools|[Ll]anguages\s?[&|and|&amp;]\s?[fF]rameworks)"
+REGEX_CYCLE="([Aa]dote|[Ee]xperimente|[aA]valie|[Ee]vite|[aA]dopt|[Tt]rial|[Aa]ssess|[Hh]old)"
 REGEX_BLIP="(.*)$"
 
 FULL_REGEX="^[.*]?" + REGEX_quadrant + "[\s*]?-[\s*]?" + REGEX_CYCLE + "[\s*]?-[\s*]?" + REGEX_BLIP
@@ -43,6 +44,11 @@ class Tweet:
     def split_content(self, content):
         print content
         results = re.search(FULL_REGEX, content)
+        if results is None:
+            self.quadrant = None
+            self.cycle = None
+            self.blip = None
+            return
         self.quadrant = QUADRANT_DICT[results.group(1).lower()]
         self.cycle = CYCLE_DICT[results.group(2).lower()]
         dirty_blip = results.group(3).lower()
