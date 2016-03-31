@@ -27,12 +27,11 @@ CYCLE_DICT = {
     "hold":"hold"
 
 }
-REGEX_quadrant="([Tt][é|e]?cnicas|[Pp]lataformas|[Ff]erramentas|[Ll]inguagens\s?[&|e|&amp;]\s?[fF]rameworks|[tT]echniques|[Pp]latforms|[Tt]ools|[Ll]anguages\s?[&|and|&amp;]\s?[fF]rameworks)"
+REGEX_quadrant="([Tt][é|e]?cnica[s]?|[Pp]lataforma[s]?|[Ff]erramenta[s]?|[Ll]inguage[m|ns]\s?[&|e|&amp;]\s?[fF]ramework[s]?|[tT]echnique[s]?|[Pp]latform[s]?|[Tt]ool[s]?|[Ll]anguage[s]?\s?[&|and|&amp;]\s?[fF]ramework[s]?)"
 REGEX_CYCLE="([Aa]dote|[Ee]xperimente|[aA]valie|[Ee]vite|[aA]dopt|[Tt]rial|[Aa]ssess|[Hh]old)"
 REGEX_BLIP="(.*)$"
 
 FULL_REGEX="^[.*]?" + REGEX_quadrant + "[\s*]?-[\s*]?" + REGEX_CYCLE + "[\s*]?-[\s*]?" + REGEX_BLIP
-print FULL_REGEX
 class Tweet:
 
     def __init__(self, date, username, name, content):
@@ -42,7 +41,6 @@ class Tweet:
         self.split_content(content.encode('ascii', 'ignore'))
 
     def split_content(self, content):
-        print content
         results = re.search(FULL_REGEX, content)
         if results is None:
             self.quadrant = None

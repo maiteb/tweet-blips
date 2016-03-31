@@ -8,9 +8,8 @@ from export_google_sheet import export_all
 
 def _parse_args():
     parser = argparse.ArgumentParser("Twitter's Feed Consumer")
-    parser.add_argument('--hashtags',
-                        nargs='*',
-                        help='2 hashtags to be searched WITHOUT the # signal')
+    parser.add_argument('--hashtag',
+                        help='hashtag to be searched WITHOUT the # signal')
     args = parser.parse_args()
     return args
 
@@ -50,12 +49,12 @@ if __name__ == '__main__':
     t = Twitter(auth=OAuth(access_key,access_secret,consumer_key,consumer_secret))
 
     last_id_found = long(_find_last_id_found())
-    query = t.search.tweets(q='#' + args.hashtags[0] + "+#" + args.hashtags[1],count=50, since_id=last_id_found)
+    query = t.search.tweets(q='#' + args.hashtag,count=50, since_id=last_id_found)
 
     if not query['statuses']:
-        print "No new tweet was found with the hashtag #" + args.hashtags[0] + " and #" + args.hashtags[1]
+        print "No new tweet was found with the hashtag #" + args.hashtag
     else:
         max_id, tweets =_parse_tweets(query["statuses"], last_id_found)
         _update_max_id(max_id)
         export_all(tweets)
-        print "We exported " + str(len(tweets)) + " new tweets with the hashtag #" + args.hashtags[0] + " and #" + args.hashtags[1] + " to the Google Sheet"
+        print "We exported " + str(len(tweets)) + " new tweets with the hashtag #" + args.hashtag + " to the Google Sheet"
