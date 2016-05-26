@@ -57,15 +57,21 @@ Export them as environment variables like:
 export GSPREAD_CLIENT_EMAIL=<GOOGLE_CLIENT_EMAIL>
 export GSPREAD_PRIVATE_KEY_ID=<GOOGLE_PRIVATE_KEY_ID>
 export GSPREAD_PRIVATE_KEY=<GOOGLE_PRIVATE_KEY>
-export GSPREAD_PREVIOUS_RADAR_NAME=<SHEET_NAME_WITH_AN_OLDER_VERSION_OF_RADAR>
-export GSPREAD_SHEET_NAME=<SHEET_NAME_TO_BE_USED>
 ```
 
 - Create a Google Spreadsheet and share it with the GOOGLE_CLIENT_EMAIL
 generated in the step above.
 Export the spreadsheet name as environment variable like:
 
+```
 export GSPREAD_SHEET_NAME=<GOOGLE_SPREADSHEET_NAME>
+```
+- You'll need to have a sheet, at the same spreadsheet, with the latest version of radar's blips, in order to identify if some blip is new or not.
+Export the sheet name as environment variable like:
+
+```
+export GSPREAD_PREVIOUS_RADAR_NAME=<SHEET_NAME_WITH_AN_OLDER_VERSION_OF_RADAR>
+```
 
 - Install requirements
 
