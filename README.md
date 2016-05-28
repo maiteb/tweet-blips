@@ -33,7 +33,7 @@ Linguagens e Frameworks - Adote - ES6 #HashtagToBeSearched
 ```
 
 All the filtered tweets will be saved into a Google Spreadsheet to feed
-(https://github.com/maiteb/tech-radar)
+(https://github.com/ThoughtWorksInc/tech-radar)
 
 ## Getting Started
 
