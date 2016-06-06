@@ -49,15 +49,15 @@ $ export TWITTER_CONSUMER_KEY=<APP_CONSUMER_KEY>
 $ export TWITTER_CONSUMER_SECRET=<APP_CONSUMER_SECRET>
 ```
 - Go to ```https://console.developers.google.com/```, create a project
-and then create a service account credential.
+and then create a service account credential. This action will generate a file json.
 
-Export them as environment variables like:
+Export it as environment variable like:
 
 ```
-export GSPREAD_CLIENT_EMAIL=<GOOGLE_CLIENT_EMAIL>
-export GSPREAD_PRIVATE_KEY_ID=<GOOGLE_PRIVATE_KEY_ID>
-export GSPREAD_PRIVATE_KEY=<GOOGLE_PRIVATE_KEY>
+export GSPREAD_JSON_FILE=<FILE_NAME>
 ```
+
+**The file should be on the root of the project.**
 
 - Create a Google Spreadsheet and share it with the GOOGLE_CLIENT_EMAIL
 generated in the step above.
