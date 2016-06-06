@@ -46,15 +46,11 @@ def _export_to_google(wks, blips_to_export):
 
 def export_all(tweets):
     scope = ['https://spreadsheets.google.com/feeds']
-    client_email = os.getenv('GSPREAD_CLIENT_EMAIL')
-#    private_key = os.getenv('GSPREAD_PRIVATE_KEY').encode()
-#    private_key_id = os.getenv('GSPREAD_PRIVATE_KEY_ID')
-#    signer = crypt.Signer.from_string(private_key)
+    
     sheet_name = os.getenv('GSPREAD_SHEET_NAME')
     worksheet_previous_radar_name = os.getenv('GSPREAD_PREVIOUS_RADAR_NAME')
 
-#    credentials = ServiceAccountCredentials(service_account_email=client_email, signer=signer, private_key_id=private_key_id, scopes=scope)
-    credentials = ServiceAccountCredentials.from_json_keyfile_name('../tweet-c87efffffce1.json', scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(os.getenv('GSPREAD_JSON_FILE'), scope)
     gc = gspread.authorize(credentials)
 
     sht = gc.open(sheet_name)
